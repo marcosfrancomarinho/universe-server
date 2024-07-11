@@ -60,7 +60,7 @@ class SelectPlanets implements iSelectPlanets {
 }
 
 // Define a rota POST para buscar planetas
-search.post('/', async (req: Request, res: Response) => {
+search.get('/', async (req: Request, res: Response) => {
     try {
         const select: iSelectPlanets = new SelectPlanets();
         const { id, code, name } = req.query as {

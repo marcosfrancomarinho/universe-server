@@ -29,7 +29,7 @@ class SelectPlanets {
         res.status(200).json(response);
     }
 }
-search.post('/', async (req, res) => {
+search.get('/', async (req, res) => {
     try {
         const select = new SelectPlanets();
         const { id, code, name } = req.query;
