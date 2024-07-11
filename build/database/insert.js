@@ -14,7 +14,7 @@ var InsertDB;
             check.verificationDatas(name, code, satellites);
             await model_1.default.create({
                 name: name,
-                code: code,
+                code: code.trim().toUpperCase(),
                 satellites: satellites
             });
             const response = {

@@ -101,7 +101,7 @@ interface iValidate {
      * Valida se o valor é nulo.
      * @param value - Valor a ser verificado.
      */
-    itsNull(value: null | Array<iSearchPlanets | any>): void;
+    itsNull(value: null | Array<iSearchPlanets | void>): void;
 
     /**
      * Valida se o ID e o nome foram informados e são válidos.

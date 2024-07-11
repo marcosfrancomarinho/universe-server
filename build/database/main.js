@@ -1,11 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
-const sequelize = new sequelize_1.Sequelize({
-    username: 'root',
-    password: '151822',
-    database: 'universe',
-    host: 'localhost',
-    dialect: 'mysql'
+const sequelize = new sequelize_1.Sequelize(process.env.URL, {
+    dialect: 'postgres'
 });
 exports.default = sequelize;

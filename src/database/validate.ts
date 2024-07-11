@@ -129,7 +129,7 @@ export namespace CheckError {
          * @param value O valor a ser verificado.
          * @throws Error Se o valor for nulo.
          */
-        public itsNull(value: null | Array<iSearchPlanets | any>): void {
+        public itsNull(value: null | Array<iSearchPlanets | void>): void {
             if (!value || value.length === 0) {
                 throw new Error(this.messageError.null);
             }
@@ -193,3 +193,4 @@ export namespace CheckError {
         }
     }
 }
+

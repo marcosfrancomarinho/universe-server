@@ -88,3 +88,4 @@ search.post('/', async (req: Request, res: Response) => {
 });
 
 export default search;
+

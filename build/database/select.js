@@ -52,7 +52,7 @@ var SelectDB;
             check.hasCode(code);
             const response = await model_1.default.findOne({
                 where: {
-                    code: code.toUpperCase().trim()
+                    code: code.trim().toUpperCase()
                 },
                 attributes: attr,
                 raw: true

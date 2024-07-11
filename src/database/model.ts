@@ -45,4 +45,7 @@ const Planets = sequelize.define('planetas', {
     timestamps: true,
 });
 
+
 export default Planets;
+
+

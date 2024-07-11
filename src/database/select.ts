@@ -3,7 +3,7 @@ import Planets from "./model";
 import { CheckError } from "./validate";
 import { iSearchPlanets } from "./interfaces";
 
-const check: CheckError.Validate = new CheckError.Validate()
+const check: CheckError.Validate = new CheckError.Validate();
 
 /**
  * Namespace SelectDB contém funções para buscar informações de planetas no banco de dados.
@@ -27,7 +27,7 @@ export namespace SelectDB {
                 raw: true,
                 attributes: attr
             });
-            check.itsNull(response as Array<iSearchPlanets | any> | null);
+            check.itsNull(response as Array<iSearchPlanets | void> | null);
             return response as iSearchPlanets;
         } catch (error) {
             throw error;
@@ -50,7 +50,7 @@ export namespace SelectDB {
                 attributes: attr,
                 raw: true
             });
-            check.itsNull(response as Array<iSearchPlanets | any> | null);
+            check.itsNull(response as Array<iSearchPlanets | void> | null);
             return response as Array<iSearchPlanets>;
         } catch (error) {
             throw error;
@@ -68,12 +68,12 @@ export namespace SelectDB {
             check.hasCode(code);
             const response: unknown = await Planets.findOne({
                 where: {
-                    code: code.toUpperCase().trim()
+                    code: code.trim().toUpperCase()
                 },
                 attributes: attr,
                 raw: true
             });
-            check.itsNull(response as Array<iSearchPlanets | any> | null);
+            check.itsNull(response as Array<iSearchPlanets | void> | null);
             return response as iSearchPlanets;
         } catch (error) {
             throw error;
