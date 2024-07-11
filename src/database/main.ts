@@ -7,7 +7,7 @@ import { Sequelize } from "sequelize";
  * O Sequelize é configurado para usar o dialeto PostgreSQL.
  */
 const sequelize: Sequelize = new Sequelize(
-    process.env.URL as string,
+    'postgres://gsuhelcb:HZ17wkhBtEprABlbFX_CTriLvh2oiWNt@isabelle.db.elephantsql.com/gsuhelcb',
     {
         dialect: 'postgres'
     }
