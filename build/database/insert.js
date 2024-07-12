@@ -13,7 +13,7 @@ var InsertDB;
         try {
             check.verificationDatas(name, code, satellites);
             await model_1.default.create({
-                name: name,
+                name: name.trim().toLowerCase(),
                 code: code.trim().toUpperCase(),
                 satellites: satellites
             });

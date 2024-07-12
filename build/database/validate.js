@@ -71,8 +71,8 @@ var CheckError;
         }
         uniquePlanets(error) {
             const code = error?.original?.code;
-            const messageSql = error?.parent?.sqlMessage;
-            if (code === 'ER_DUP_ENTRY') {
+            const messageSql = error?.parent;
+            if (code === '23505') {
                 throw new Error(messageSql);
             }
         }

@@ -118,8 +118,8 @@ export namespace CheckError {
          */
         public uniquePlanets(error: any): void {
             const code: string | undefined = error?.original?.code;
-            const messageSql: string | undefined = error?.parent?.sqlMessage;
-            if (code === 'ER_DUP_ENTRY') {
+            const messageSql: string | undefined = error?.parent;
+            if (code === '23505') {
                 throw new Error(messageSql);
             }
         }

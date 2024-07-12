@@ -23,7 +23,7 @@ export namespace InsertDB {
 
             // Cria um novo registro de planeta no banco de dados.
             await Planets.create({
-                name: name,
+                name: name.trim().toLowerCase(),
                 code: code.trim().toUpperCase(),
                 satellites: satellites
             });

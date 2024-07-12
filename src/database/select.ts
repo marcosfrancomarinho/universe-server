@@ -45,7 +45,7 @@ export namespace SelectDB {
             check.hasName(name);
             const response: unknown = await Planets.findAll({
                 where: {
-                    name: { [Op.like]: `%${name.trim()}%` }
+                    name: { [Op.like]: `%${name.trim().toLowerCase()}%` }
                 },
                 attributes: attr,
                 raw: true

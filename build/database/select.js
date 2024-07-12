@@ -34,7 +34,7 @@ var SelectDB;
             check.hasName(name);
             const response = await model_1.default.findAll({
                 where: {
-                    name: { [sequelize_1.Op.like]: `%${name.trim()}%` }
+                    name: { [sequelize_1.Op.like]: `%${name.trim().toLowerCase()}%` }
                 },
                 attributes: attr,
                 raw: true
