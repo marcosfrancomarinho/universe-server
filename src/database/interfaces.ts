@@ -205,7 +205,7 @@ interface iMessageError {
      * Mensagem de erro para quando nenhum dos parâmetros obrigatórios é fornecido.
      */
     response: string;
-    
+
     /**
      * Mensagem de erro para quando não se encontra um planeta com base no código na deleção.
      */
@@ -268,7 +268,37 @@ interface iRemovePlanets {
      */
     removePlanetsCode(code: string, res: Response): Promise<void>;
 }
+/**
+ * Interface para definir métodos de atualização de planetas.
+ */
+interface iUpdatePlanets {
+    /**
+     * Altera o nome de um planeta com base no ID fornecido.
+     * @param id - ID do planeta a ser atualizado.
+     * @param name - Novo nome do planeta.
+     * @param res - Objeto de resposta do Express.
+     * @returns Promise<void>
+     */
+    alterName(id: number, name: string, res: Response): Promise<void>;
 
+    /**
+     * Altera o código de um planeta com base no ID fornecido.
+     * @param id - ID do planeta a ser atualizado.
+     * @param code - Novo código do planeta.
+     * @param res - Objeto de resposta do Express.
+     * @returns Promise<void>
+     */
+    alterCode(id: number, code: string, res: Response): Promise<void>;
+
+    /**
+     * Altera as informações de satélites de um planeta com base no ID fornecido.
+     * @param id - ID do planeta a ser atualizado.
+     * @param satellites - Novas informações de satélites do planeta.
+     * @param res - Objeto de resposta do Express.
+     * @returns Promise<void>
+     */
+    alterSatellites(id: number, satellites: iSatellites, res: Response): Promise<void>;
+}
 export {
     iResponse,
     iSatellites,
@@ -276,5 +306,6 @@ export {
     iValidate,
     iMessageError,
     iSelectPlanets,
-    iRemovePlanets
+    iRemovePlanets,
+    iUpdatePlanets
 }

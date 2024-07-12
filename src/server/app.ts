@@ -3,6 +3,7 @@ import cors from "cors";
 import create from "./router/create";
 import search from "./router/search";
 import remove from "./router/remove";
+import update from "./router/update"; // Importe o módulo de atualização
 
 // Inicializa a aplicação Express
 const app: Express = express();
@@ -38,9 +39,16 @@ app.use('/search', search);
 /**
  * Define a rota para remoção de planetas.
  * 
- * As requisições enviadas para a rota `/delete` serão tratadas pelo módulo `remove`.
+ * As requisições enviadas para a rota `/remove` serão tratadas pelo módulo `remove`.
  */
-app.use('/delete', remove);
+app.use('/remove', remove);
+
+/**
+ * Define a rota para atualização de planetas.
+ * 
+ * As requisições enviadas para a rota `/update` serão tratadas pelo módulo `update`.
+ */
+app.use('/update', update);
 
 /**
  * Inicia o servidor na porta definida.
