@@ -19,6 +19,7 @@ var CheckError;
                 noFindID: 'Não se encontram planetas com base neste ID ou código',
                 response: 'Informe na query o id ou código do planeta ou o nome',
                 responseDelete: 'Informe na query o id ou código do planeta',
+                responseAll: 'Informe no body o id com nome ou código ou sátelite',
                 lengthCode: (length) => {
                     return `Código deve conter 5 caracteres - Código informado: ${length}`;
                 }
@@ -107,6 +108,11 @@ var CheckError;
         checkIdCode(id, code) {
             if (!id && !code) {
                 throw new Error(this.messageError.responseDelete);
+            }
+        }
+        checkAllDatas(code, name, satellites) {
+            if (!code && !name && !satellites) {
+                throw new Error(this.messageError.responseAll);
             }
         }
     }

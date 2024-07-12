@@ -29,7 +29,20 @@ class UpdatePlanets {
         res.status(200).json(response);
     }
 }
-update.put('/', (req, res) => {
-    res.send('teste PUT');
+update.put('/', async (req, res) => {
+    try {
+        const updatePlanets = new UpdatePlanets();
+        const { id, name, code, satellites } = req.body;
+        check.checkAllDatas(code, name, satellites);
+        if (name)
+            return await updatePlanets.alterName(id, name, res);
+        if (code)
+            return await updatePlanets.alterCode(id, code, res);
+        if (satellites)
+            return await updatePlanets.alterSatellites(id, satellites, res);
+    }
+    catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 });
 exports.default = update;

@@ -27,10 +27,11 @@ export namespace CheckError {
                 noFindID: 'Não se encontram planetas com base neste ID ou código',
                 response: 'Informe na query o id ou código do planeta ou o nome',
                 responseDelete: 'Informe na query o id ou código do planeta',
+                responseAll: 'Informe no body o id com nome ou código ou sátelite',
                 lengthCode: (length: number): string => {
                     return `Código deve conter 5 caracteres - Código informado: ${length}`;
                 }
-            }
+            };
         }
 
         /**
@@ -92,7 +93,7 @@ export namespace CheckError {
          * @param id O ID do planeta.
          * @throws Error Se o ID for inválido.
          */
-        public hasID(id: number) {
+        public hasID(id: number): void {
             if (isNaN(id) || !id || id <= 0) {
                 throw new Error(this.messageError.id);
             }
@@ -201,6 +202,19 @@ export namespace CheckError {
         public checkIdCode(id: number, code: string): void {
             if (!id && !code) {
                 throw new Error(this.messageError.responseDelete);
+            }
+        }
+
+        /**
+         * Verifica se todos os dados necessários foram fornecidos na operação.
+         * @param code O código do planeta.
+         * @param name O nome do planeta.
+         * @param satellites As informações dos satélites.
+         * @throws Error Se nenhum dos parâmetros for fornecido.
+         */
+        public checkAllDatas(code: string, name: string, satellites: iSatellites): void {
+            if (!code && !name && !satellites) {
+                throw new Error(this.messageError.responseAll);
             }
         }
     }

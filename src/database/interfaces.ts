@@ -145,6 +145,14 @@ interface iValidate {
      * @param code - O código do planeta.
      */
     checkIdCode(id: number, code: string): void;
+
+    /**
+     * Verifica se todos os dados necessários foram informados.
+     * @param code - O código do planeta.
+     * @param name - O nome do planeta.
+     * @param satellites - Informações sobre os satélites do planeta.
+     */
+    checkAllDatas(code: string, name: string, satellites: iSatellites): void;
 }
 
 /**
@@ -212,6 +220,11 @@ interface iMessageError {
     responseDelete: string;
 
     /**
+     * Mensagem de erro para quando não se encontram dados no corpo da solicitação.
+     */
+    responseAll: string;
+
+    /**
      * Função que retorna uma mensagem de erro para código com tamanho diferente de 5 caracteres.
      * @param length - Tamanho do código informado.
      * @returns Mensagem de erro.
@@ -268,6 +281,7 @@ interface iRemovePlanets {
      */
     removePlanetsCode(code: string, res: Response): Promise<void>;
 }
+
 /**
  * Interface para definir métodos de atualização de planetas.
  */
@@ -299,6 +313,7 @@ interface iUpdatePlanets {
      */
     alterSatellites(id: number, satellites: iSatellites, res: Response): Promise<void>;
 }
+
 export {
     iResponse,
     iSatellites,
