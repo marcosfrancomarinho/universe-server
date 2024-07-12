@@ -99,7 +99,6 @@ export namespace AlterDB {
                 done: true
             } as iResponse;
         } catch (error) {
-            check.uniquePlanets(error);
             throw error;
         }
     }

@@ -52,7 +52,6 @@ var AlterDB;
             };
         }
         catch (error) {
-            check.uniquePlanets(error);
             throw error;
         }
     }
