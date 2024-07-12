@@ -16,8 +16,9 @@ var CheckError;
                 object: 'Objeto satélite não foi informado',
                 equalsAmountSatellites: 'Quantidade de satélites especificada está diferente da quantidade informada',
                 null: 'O planeta buscado não foi encontrado',
-                noFindID: 'Não se encontram planetas com base neste ID',
+                noFindID: 'Não se encontram planetas com base neste ID ou código',
                 response: 'Informe na query o id ou código do planeta ou o nome',
+                responseDelete: 'Informe na query o id ou código do planeta',
                 lengthCode: (length) => {
                     return `Código deve conter 5 caracteres - Código informado: ${length}`;
                 }
@@ -101,6 +102,11 @@ var CheckError;
         checkResponse(id, code, name) {
             if (!id && !code && !name) {
                 throw new Error(this.messageError.response);
+            }
+        }
+        checkIdCode(id, code) {
+            if (!id && !code) {
+                throw new Error(this.messageError.responseDelete);
             }
         }
     }

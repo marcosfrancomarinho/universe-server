@@ -137,7 +137,14 @@ interface iValidate {
      * @param name - O nome do planeta.
      * @throws Error Se nenhum dos parâmetros for fornecido.
      */
-    checkResponse(id: number, code: string, name: string): void
+    checkResponse(id: number, code: string, name: string): void;
+
+    /**
+     * Verifica se o ID e o código foram informados.
+     * @param id - O ID do planeta.
+     * @param code - O código do planeta.
+     */
+    checkIdCode(id: number, code: string): void;
 }
 
 /**
@@ -198,6 +205,11 @@ interface iMessageError {
      * Mensagem de erro para quando nenhum dos parâmetros obrigatórios é fornecido.
      */
     response: string;
+    
+    /**
+     * Mensagem de erro para quando não se encontra um planeta com base no código na deleção.
+     */
+    responseDelete: string;
 
     /**
      * Função que retorna uma mensagem de erro para código com tamanho diferente de 5 caracteres.
@@ -236,11 +248,33 @@ interface iSelectPlanets {
     selectName(name: string, res: Response): Promise<void>;
 }
 
+/**
+ * Interface para definir métodos de remoção de planetas.
+ */
+interface iRemovePlanets {
+    /**
+     * Remove um planeta pelo ID.
+     * @param id - ID do planeta a ser removido.
+     * @param res - Objeto de resposta do Express.
+     * @returns Promise<void>
+     */
+    removePlanetsId(id: number, res: Response): Promise<void>;
+
+    /**
+     * Remove um planeta pelo código.
+     * @param code - Código do planeta a ser removido.
+     * @param res - Objeto de resposta do Express.
+     * @returns Promise<void>
+     */
+    removePlanetsCode(code: string, res: Response): Promise<void>;
+}
+
 export {
     iResponse,
     iSatellites,
     iSearchPlanets,
     iValidate,
     iMessageError,
-    iSelectPlanets
+    iSelectPlanets,
+    iRemovePlanets
 }

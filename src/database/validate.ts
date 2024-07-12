@@ -4,7 +4,6 @@ import { iValidate, iMessageError, iSatellites, iSearchPlanets } from "./interfa
  * Namespace CheckError contém a classe Validate, que é responsável por realizar validações em diversos dados.
  */
 export namespace CheckError {
-
     /**
      * A classe Validate implementa a interface iValidate e contém métodos para validar dados relacionados a planetas e satélites.
      */
@@ -25,8 +24,9 @@ export namespace CheckError {
                 object: 'Objeto satélite não foi informado',
                 equalsAmountSatellites: 'Quantidade de satélites especificada está diferente da quantidade informada',
                 null: 'O planeta buscado não foi encontrado',
-                noFindID: 'Não se encontram planetas com base neste ID',
+                noFindID: 'Não se encontram planetas com base neste ID ou código',
                 response: 'Informe na query o id ou código do planeta ou o nome',
+                responseDelete: 'Informe na query o id ou código do planeta',
                 lengthCode: (length: number): string => {
                     return `Código deve conter 5 caracteres - Código informado: ${length}`;
                 }
@@ -191,6 +191,17 @@ export namespace CheckError {
                 throw new Error(this.messageError.response);
             }
         }
+
+        /**
+         * Verifica se o ID e o código são válidos na operação de deleção.
+         * @param id O ID do planeta.
+         * @param code O código do planeta.
+         * @throws Error Se nenhum dos parâmetros for fornecido.
+         */
+        public checkIdCode(id: number, code: string): void {
+            if (!id && !code) {
+                throw new Error(this.messageError.responseDelete);
+            }
+        }
     }
 }
-
